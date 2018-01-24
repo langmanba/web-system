@@ -11,6 +11,7 @@
     <modules>
         <module>../com-web-eureka</module>
         <module>../com-web-config</module>
+        <module>../../com-web-portal-web</module>
     </modules>
 
 
