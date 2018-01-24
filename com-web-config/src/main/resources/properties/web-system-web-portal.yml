@@ -1,0 +1,7 @@
+#应用名称
+spring:
+    application:
+        name: tradecenter-system-activity-web
+#端口
+server:
+    port: 1003

@@ -1,0 +1,19 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+
+
+spring:
+  #对应{application}部分
+  application:
+    name: web-system
+  cloud:
+    config:
+        discovery:
+            #参数设置为 true，开启通过服务来访问 Spring Cloud Config Server 的功能
+            enabled: true
+            #指定配置中心的服务名,便于扩展为高可用配置集群
+            serviceId: cloud-config
+        #对应{profile}部分
+        profile: web-portal
