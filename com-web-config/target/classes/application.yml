@@ -1,0 +1,16 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1001/eureka/
+spring:
+  application:
+    name: spring-cloud-config
+  profiles:
+    active: native
+
+  cloud:
+      config:
+          server:
+              native:
+                  #属性文件地址，只要指定文件夹的路径
+                  search-locations: classpath:/properties/
