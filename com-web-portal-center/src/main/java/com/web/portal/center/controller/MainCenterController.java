@@ -1,5 +1,7 @@
 package com.web.portal.center.controller;
 
+import com.web.portal.center.dao.QueryMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +10,9 @@ import java.util.List;
 
 @RestController
 public class MainCenterController {
+
+    @Autowired
+    QueryMapper mapper;
 
     @Value("${server.port}")
     String port;
@@ -20,7 +25,7 @@ public class MainCenterController {
     }
 
     @RequestMapping(value = "/getCity")
-    List showList(){
-
+    String showList(){
+        return mapper.getAge("lyb123");
     }
 }
