@@ -1,13 +1,16 @@
-package com.web.protal.web;
+package com.web.protal.center;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ProtalApplication {
+@EnableFeignClients
+public class ProtalCenterApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(ProtalApplication.class, args);
+        SpringApplication.run(ProtalCenterApplication.class, args);
     }
 }

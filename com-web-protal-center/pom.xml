@@ -10,8 +10,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>com-web-protal-web</artifactId>
+    <artifactId>com-web-protal-center</artifactId>
     <version>1.0-SNAPSHOT</version>
+
 
     <dependencies>
         <dependency>
@@ -28,19 +29,8 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com-web-parent</groupId>
-            <artifactId>com-web-portal-feign</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
-
-
 </project>
