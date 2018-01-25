@@ -14,6 +14,7 @@
         <module>../com-web-protal-web</module>
         <module>../com-web-portal-feign</module>
         <module>../com-web-protal-center</module>
+        <module>../com-web-util</module>
     </modules>
 
 
@@ -42,6 +43,35 @@
                 <version>1.2.0</version>
             </dependency>
 
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jdom</groupId>
+                <artifactId>jdom</artifactId>
+                <version>1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.0.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.caiyi.httpclient</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.1.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>4.4.6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
