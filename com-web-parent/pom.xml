@@ -15,6 +15,7 @@
         <module>../com-web-portal-feign</module>
         <module>../com-web-protal-center</module>
         <module>../com-web-util</module>
+        <module>../com-web-portal-domains</module>
     </modules>
 
 
