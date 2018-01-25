@@ -1,6 +1,6 @@
-package com.web.protal.web.service;
+package com.web.portal.web.service;
 
-import com.web.protal.web.feign.ProtalFeignClient;
+import com.web.portal.web.feign.ProtalFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.web.protal.web.feign;
+package com.web.portal.web.feign;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;

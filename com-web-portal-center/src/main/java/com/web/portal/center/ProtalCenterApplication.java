@@ -1,4 +1,4 @@
-package com.web.protal.web;
+package com.web.portal.center;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +8,9 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class PortalApplication {
+public class ProtalCenterApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(PortalApplication.class, args);
+        SpringApplication.run(ProtalCenterApplication.class, args);
     }
 }

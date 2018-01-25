@@ -1,4 +1,4 @@
-package com.web.protal.center.controller;
+package com.web.portal.center.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
-package com.web.protal.web.controller;
+package com.web.portal.web.controller;
 
-import com.web.protal.web.service.MainWebService;
+import com.web.portal.web.service.MainWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
