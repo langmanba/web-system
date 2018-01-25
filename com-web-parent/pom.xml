@@ -16,6 +16,7 @@
         <module>../com-web-portal-center</module>
         <module>../com-web-util</module>
         <module>../com-web-portal-domains</module>
+        <module>../com-web-websocket</module>
     </modules>
 
 
