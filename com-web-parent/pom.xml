@@ -11,9 +11,9 @@
     <modules>
         <module>../com-web-eureka</module>
         <module>../com-web-config</module>
-        <module>../com-web-protal-web</module>
+        <module>../com-web-portal-web</module>
         <module>../com-web-portal-feign</module>
-        <module>../com-web-protal-center</module>
+        <module>../com-web-portal-center</module>
         <module>../com-web-util</module>
         <module>../com-web-portal-domains</module>
     </modules>
