@@ -1,0 +1,38 @@
+*********************
+Windows端使用rabbitmq
+2018/2/5
+*********************
+下载地址：http://www.rabbitmq.com/install-windows.html
+
+1：安装
+    1.1: 安装erlang语言环境（otp安装包）
+        http://www.erlang.org/downloads
+
+    1.2: 安装 erlang,配置 erlang 环境变量
+        Path添加：C:\Program Files\erl9.2\bin
+        cmd输入erl查看安装是否成功
+
+    1.3：安装 rabbitmq，配置 rabbitmq 环境变量
+        C:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.3\sbin
+        注意： RabbitMQ安装目录中是不允许有空格
+
+    1.4：安装 RabbitMQ-Plugins 管理界面
+        打开cmd命令行cd进入rabbitmq的sbin目录，
+        输入rabbitmq-plugins enable rabbitmq_management
+        浏览器输入http://localhost:15672进行验证，帐号密码默认guest
+
+        注意：如果浏览打不开或者安装失败，移除插件重新安装
+            打开cmd命令行cd进入rabbitmq的sbin目录，
+            首先：rabbitmq-service stop
+            接着：rabbitmq-service remove
+            再接着：rabbitmq-service install
+            接着：rabbitmq-service start
+            最后：rabbitmq-plugins enable rabbitmq_management
+
+            打开浏览器输入http://localhost:15672进行验证
+
+
+*********************
+Linux端使用rabbitmq
+2018/2/5
+*********************

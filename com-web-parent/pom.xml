@@ -17,6 +17,7 @@
         <module>../com-web-util</module>
         <module>../com-web-portal-domains</module>
         <module>../com-web-websocket</module>
+        <module>../com-web-rabbitmq</module>
     </modules>
 
 
