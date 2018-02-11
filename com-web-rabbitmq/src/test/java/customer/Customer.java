@@ -29,7 +29,7 @@ public class Customer {
 //            channel.queueDeclare(QUEUE_NAME, true, false, false, null);
             String queueName=channel.queueDeclare().getQueue();
             channel.queueBind(queueName,EXCHANGE_NAME,QUEUE_NAME);
-            System.out.println("Customer Waiting Received messages");
+            System.out.println("Customer Waiting Received messages："+queueName);
             //DefaultConsumer类实现了Consumer接口，通过传入一个频道，
             // 告诉服务器我们需要那个频道的消息，如果频道中有消息，就会执行回调函数handleDelivery
             QueueingConsumer consumer = new QueueingConsumer(channel);
