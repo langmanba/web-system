@@ -1,64 +1,87 @@
 package com.web.portal.web.service.impl;
 
+import com.util.CheckUtil;
+import com.util.VerificationCodeTool;
+import com.web.portal.web.pojo.Result;
+import com.web.portal.web.pojo.UserBean;
+import com.web.portal.web.pojo.UserConstants;
 import com.web.portal.web.service.ImageService;
 import org.springframework.stereotype.Component;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
+import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Random;
 
 @Component("imageService")
 public class ImageServiceImpl implements ImageService {
     @Override
-    public void createImg(HttpServletResponse response) throws IOException {
-        int i = 70;
-        int j = 20;
-        BufferedImage localBufferedImage = new BufferedImage(i, j, 1);
-        Graphics localGraphics = localBufferedImage.getGraphics();
-        Random localRandom = new Random();
-        localGraphics.fillRect(0, 0, i, j);
-        localGraphics.setFont(new Font("Times New Roman", 0, 18));
-        localGraphics.setColor(_$1(160, 200));
-        for (int k = 0; k < 155; ++k) {
-            int l = localRandom.nextInt(i);
-            int i1 = localRandom.nextInt(j);
-            int i2 = localRandom.nextInt(12);
-            int i3 = localRandom.nextInt(12);
-            localGraphics.drawLine(l, i1, l + i2, i1 + i3);
-        }
-        String str2 = "";
-        for (int l = 0; l < 5; ++l) {
-            String str3 = String.valueOf(localRandom.nextInt(10));
-            str2 = str2 + str3;
-            localGraphics.setColor(new Color(20 + localRandom.nextInt(110),
-                    20 + localRandom.nextInt(110), 20 + localRandom
-                    .nextInt(110)));
-            localGraphics.drawString(str3, 13 * l + 6, 16);
-        }
+    public void createImg(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        response.setContentType("image/jpeg");
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0L);
+        VerificationCodeTool vct = new VerificationCodeTool();
+        BufferedImage image = vct.getnumberImage();
+        HttpSession session = request.getSession(true);
+        try {
+            ServletOutputStream localServletOutputStream = response.getOutputStream();
+            session.setAttribute(UserConstants.SESSION_YZM, vct.getXyresult() + "");
+            ImageIO.write(image, "JPEG", localServletOutputStream);
+            localServletOutputStream.flush();
+            localServletOutputStream.close();
+            System.out.println("验证码生成成功,内容:" + vct.getRandomString() + " 结果:" + vct.getXyresult());
+        } catch (Exception e) {
+            e.printStackTrace();
 
-        System.out.println(str2);
-
-        localGraphics.dispose();
-        localBufferedImage.flush();
-        OutputStream os = response.getOutputStream();
-        ImageIO.write(localBufferedImage, "JPEG", os);
-        os.flush();
-        os.close();
+        }
     }
 
-    private static Color _$1(int paramInt1, int paramInt2) {
-        Random localRandom = new Random();
-        if (paramInt1 > 255)
-            paramInt1 = 255;
-        if (paramInt2 > 255)
-            paramInt2 = 255;
-        int i = paramInt1 + localRandom.nextInt(paramInt2 - paramInt1);
-        int j = paramInt1 + localRandom.nextInt(paramInt2 - paramInt1);
-        int k = paramInt1 + localRandom.nextInt(paramInt2 - paramInt1);
-        return new Color(i, j, k);
+    @Override
+    public void createMathImg(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("image/jpeg");
+        response.setHeader("Pragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0L);
+        VerificationCodeTool vct = new VerificationCodeTool();
+        BufferedImage image = vct.drawVerificationCodeImage();
+        HttpSession session = request.getSession(true);
+        try {
+            ServletOutputStream localServletOutputStream = response.getOutputStream();
+            session.setAttribute(UserConstants.SESSION_YZM, vct.getXyresult() + "");
+            ImageIO.write(image, "JPEG", localServletOutputStream);
+            localServletOutputStream.flush();
+            localServletOutputStream.close();
+            System.out.println("验证码生成成功,内容:" + vct.getRandomString() + " 结果:" + vct.getXyresult());
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    @Override
+    public Result checkPicYzm(UserBean bean, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            String yzm = (String) session.getAttribute(UserConstants.SESSION_YZM);
+            if (! CheckUtil.isNullString(yzm) && ! CheckUtil.isNullString(bean.getYzm())) {
+                if ( yzm.equalsIgnoreCase(bean.getYzm())) {
+                    bean.setBusiErrCode(0);
+                    bean.setBusiErrDesc("验证码正确");
+                } else {
+                    bean.setBusiErrCode(-1);
+                    bean.setBusiErrDesc("验证码错误");
+                }
+            } else {
+                bean.setBusiErrCode(-1);
+                bean.setBusiErrDesc("验证码错误");
+            }
+            Result result = new Result(bean.getBusiErrCode(), bean.getBusiErrDesc());
+            return result;
+        }
+        return null;
     }
 }

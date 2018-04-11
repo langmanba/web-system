@@ -1,20 +1,16 @@
 package com.web.portal.web.controller;
 
+import com.web.portal.web.pojo.Result;
+import com.web.portal.web.pojo.UserBean;
 import com.web.portal.web.service.ImageService;
 import com.web.portal.web.service.MainWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Random;
 
 @RestController
 public class MainController {
@@ -32,15 +28,26 @@ public class MainController {
 
     @RequestMapping(value = "/img")
     public String getImg(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        imageService.createImg(response);
+        imageService.createImg(request,response);
+        return null;
+    }
+
+    @RequestMapping(value = "/math_img")
+    public String getMath(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        imageService.createMathImg(request,response);
         return null;
     }
 
     /**
-     * 定时任务
+     * 验证图片验证码
+     *
+     * @param bean
+     * @param request
      */
-
-
+    @RequestMapping(value = "/user/check_pic_yzm.api")
+    public Result checkPicYzm(UserBean bean, HttpServletRequest request) {
+        return imageService.checkPicYzm(bean, request);
+    }
 
 
 }
